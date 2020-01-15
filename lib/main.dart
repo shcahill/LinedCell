@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Sample'),
+          title: const Text('Sample'),
         ),
         body: Column(
           children: <Widget>[
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
 
 // work well
 class _LinedCellWithStack extends StatelessWidget {
-  _LinedCellWithStack(this.color, this.child);
+  const _LinedCellWithStack(this.color, this.child);
 
   final Color color;
   final Widget child;
@@ -54,7 +54,8 @@ class _LinedCellWithStack extends StatelessWidget {
           bottom: 0,
         ),
         Padding(
-          padding: EdgeInsets.only(left: 72, top: 16, bottom: 16, right: 16),
+          padding:
+              const EdgeInsets.only(left: 72, top: 16, bottom: 16, right: 16),
           child: child,
         ),
       ],
@@ -64,7 +65,7 @@ class _LinedCellWithStack extends StatelessWidget {
 
 // not work
 class _LinedCellWithRow extends StatelessWidget {
-  _LinedCellWithRow(this.color, this.child);
+  const _LinedCellWithRow(this.color, this.child);
 
   final Color color;
   final Widget child;
@@ -73,16 +74,14 @@ class _LinedCellWithRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(left: 48),
-          child: Container(
-            color: color,
-            height: 20, // double.infinity won't work!
-            width: 8,
-          ),
+        Container(
+          margin: const EdgeInsets.only(left: 48),
+          color: color,
+          height: 20, // double.infinity won't work!
+          width: 8,
         ),
         Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: child,
         ),
       ],
@@ -92,14 +91,14 @@ class _LinedCellWithRow extends StatelessWidget {
 }
 
 Widget _buildSmallWidget() {
-  return Text("small widget");
+  return const Text('small widget');
 }
 
 Widget _buildBigWidget() {
   return Row(
     children: <Widget>[
       Icon(Icons.train),
-      Text(
+      const Text(
         'Big Widget',
         style: TextStyle(fontSize: 36),
       ),
